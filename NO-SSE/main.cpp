@@ -12,11 +12,16 @@ int main () {
     }
 
 
-    sf::Image foreground;
-    if (!foreground.loadFromFile("AskhatCat.bmp")) {
+    sf::Image Cat;
+    if (!Cat.loadFromFile("AskhatCat.bmp")) {
         printf ("Error: image AskhatCat.bmp didn't opened\n");
         return -1;
     }
+    sf::Image foreground;
+    sf::Color Invisible(0, 0, 0, 0);
+    sf::IntRect newIm (0, 0, 236, 126);             //make constants
+    foreground.create (240, 126, Invisible);        //make constants
+    foreground.copy (Cat, 0, 0, newIm);
 
     const int WIDTH =  background.getSize().x;
     const int HEIGHT  = background.getSize().y;
@@ -58,7 +63,7 @@ int main () {
             memcpy (pixels, background.getPixelsPtr(), 4 * WIDTH * HEIGHT);
             blendPix (pixels, kit_pix, 300, 300, sizeBack, sizeKit); 
             Frame.update(pixels, WIDTH,HEIGHT, 0, 0);
-            window.clear();
+            //window.clear();
             window.draw(sprite);
             window.display();
 
