@@ -1,10 +1,7 @@
 all: link
 
 link: main.cpp alphablender.cpp
-	g++ main.cpp alphablender.cpp  -o main -Ofast -mavx2 -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
-
-test: test.cpp
-	gcc test.cpp -o test -Ofast -mavx2 -msse
+	g++ main.cpp alphablender.cpp  -o main -mavx2 -O1 -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 clean:
 	rm *.o *.out *.lst main

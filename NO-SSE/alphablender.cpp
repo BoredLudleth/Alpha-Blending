@@ -15,7 +15,7 @@ void blendPix (unsigned char* pixels, unsigned char* kit_pix, int x0, int y0, sf
     unsigned int pixel_reserved = 0;
 
     int front_pixel = 0;
-    int back_pixel  = 0;
+    int back_pixel  = 0;    
 
     for (int y = 0; y < sizeKit.y; y++) {
         for (int x = 0; x < sizeKit.x; x++) {

@@ -37,6 +37,8 @@ int main () {
     unsigned char pixels[4 * WIDTH * HEIGHT] = {};
     unsigned char kit_pix[4 * KIT_WIDTH * KIT_HEIGHT] = {};
 
+    // begin = clock();
+
     memcpy (pixels, background.getPixelsPtr(), 4 * WIDTH * HEIGHT);
     memcpy (kit_pix, foreground.getPixelsPtr(), 4 * KIT_WIDTH * KIT_HEIGHT);
 
@@ -50,8 +52,7 @@ int main () {
     sf::Sprite sprite(Frame);
     sprite.setPosition(0,0);
 
-    while (window.isOpen()) {
-        begin = clock();
+    //while (window.isOpen()) {
 
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -60,18 +61,24 @@ int main () {
                 break;
             }
 
+            begin = clock();
             memcpy (pixels, background.getPixelsPtr(), 4 * WIDTH * HEIGHT);
+
             blendPix (pixels, kit_pix, 300, 300, sizeBack, sizeKit); 
+
             Frame.update(pixels, WIDTH,HEIGHT, 0, 0);
             //window.clear();
             window.draw(sprite);
             window.display();
 
             end = clock();
-            system ("clear");
-            printf ("FPS: %lf\n", (double) (1.0 / ((double) (end - begin) / CLOCKS_PER_SEC)));
+
+            //system ("clear");
         }
-    }
+        // end = clock();
+        
+        printf ("FPS: %lf\n", (double) (end - begin) / CLOCKS_PER_SEC);
+   //}
 
     return 0;
 }

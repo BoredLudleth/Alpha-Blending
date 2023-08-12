@@ -1,5 +1,7 @@
 #include "alphablender.hpp"
 
+__m128i _255 = _mm_set_epi16(DUP8(255u)); 
+
 void blendPix (unsigned char* pixels, unsigned char* kit_pix, int x0, int y0, sf::Vector2i sizeBack, sf::Vector2i sizeKit) {
     __m128i _fr = _mm_set_epi8 (DUP16(0));        //little
     __m128i _FR = _mm_set_epi8 (DUP16(0));
@@ -8,7 +10,7 @@ void blendPix (unsigned char* pixels, unsigned char* kit_pix, int x0, int y0, sf
 
     __m128i _moveA = _mm_set_epi8 (MEOW, MEOW, MEOW, MEOW, MEOW, MEOW, MEOW, MEOW, 14, 14, 14, 14, 6, 6, 6, 6);
 
-    __m128i _255 = _mm_set_epi16(DUP8(255u)); 
+    // __m128i _255 = _mm_set_epi16(DUP8(255u)); 
     __m128i _moveOldPix = _mm_set_epi8 (MEOW, MEOW, MEOW, MEOW, MEOW, MEOW, MEOW, MEOW, 15, 13, 11, 9, 7, 5, 3, 1);
 
     __m128i _alpha = _mm_set1_epi8 (0);
